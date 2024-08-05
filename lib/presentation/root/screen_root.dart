@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:netflix/presentation/download/screen_download.dart';
 import 'package:netflix/presentation/fast_laughs/screen_fast_laugh.dart';
 import 'package:netflix/presentation/home/screen_home.dart';
-import 'package:netflix/presentation/main_page/widgets.dart';
+import 'package:netflix/presentation/root/bottom_navbar.dart';
 import 'package:netflix/presentation/new_and_hot/new_and_hot.dart';
 import 'package:netflix/presentation/search/screen_search.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class ScreenRoot extends StatelessWidget {
+  ScreenRoot({super.key});
 
-  final _pages = const [
+  final _pages = [
     ScreenHome(),
     ScreenNewAndHot(),
     ScreenFastLaugh(),
@@ -20,7 +20,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
       body: SafeArea(
         child: ValueListenableBuilder(
           valueListenable: indexNotifier,

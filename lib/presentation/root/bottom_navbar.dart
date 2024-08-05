@@ -21,13 +21,13 @@ class BottomNavBar extends StatelessWidget {
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.video_collection), label: 'New n Hot'),
+                    icon: Icon(Icons.video_collection), label: 'New & Hot'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.emoji_emotions), label: 'Fast Laugh'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.search), label: 'Search'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.download), label: 'Download'),
+                    icon: Icon(Icons.arrow_circle_down), label: 'Download'),
               ]);
         });
   }

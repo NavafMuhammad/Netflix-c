@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/core/constants.dart';
-import 'package:netflix/presentation/main_page/main_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix/core/colors.dart';
+import 'package:netflix/presentation/root/screen_root.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +15,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Netflix Clone',
-      theme: ThemeData.dark()
-          .copyWith(scaffoldBackgroundColor: kScaffoldBackgroundColor),
-      home: const MainPage(),
+      // darkTheme: ThemeData.dark(),
+      // themeMode: ThemeMode.system,
+      theme: ThemeData.dark().copyWith(
+        textTheme: GoogleFonts.montserratTextTheme(
+          ThemeData.dark().textTheme,
+        ),
+        scaffoldBackgroundColor: kScaffoldBackgroundColor,
+      ),
+      home: ScreenRoot(),
     );
   }
 }
