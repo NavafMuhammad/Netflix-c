@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({super.key, required this.title});
+  const AppBarWidget({super.key, required this.child});
 
-  final String title;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        title,
-        style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
-      ),
+      scrolledUnderElevation: 0,
+      backgroundColor: Colors.transparent,
+      title: child,
       actions: [
         IconButton(
             onPressed: () {},

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/presentation/widgets/main_card_widget.dart';
 import 'package:netflix/presentation/widgets/main_title_22.dart';
 
-const url =
-    'https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg';
+
 
 class SearchActiveEidget extends StatelessWidget {
   const SearchActiveEidget({super.key});
@@ -30,16 +30,4 @@ class SearchActiveEidget extends StatelessWidget {
   }
 }
 
-class MainCard extends StatelessWidget {
-  const MainCard({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          image: const DecorationImage(
-              fit: BoxFit.cover, image: NetworkImage(url))),
-    );
-  }
-}

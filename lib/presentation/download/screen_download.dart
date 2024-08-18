@@ -20,13 +20,32 @@ class ScreenDownload extends StatelessWidget {
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(60),
             child: AppBarWidget(
-              title: 'Downloads',
+              child: AppBarWidgetTitle(
+                title: 'Downloads',
+              ),
             )),
         body: ListView.separated(
             padding: kPadding10,
             itemBuilder: (ctx, index) => _widgetList[index],
             separatorBuilder: (ctx, index) => kHeight30,
             itemCount: _widgetList.length));
+  }
+}
+
+class AppBarWidgetTitle extends StatelessWidget {
+  const AppBarWidgetTitle({
+    required this.title,
+    super.key,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+    );
   }
 }
 
