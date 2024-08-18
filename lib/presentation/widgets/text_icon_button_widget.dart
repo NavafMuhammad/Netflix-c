@@ -68,12 +68,14 @@ class TextIconButtonWidget extends StatelessWidget {
     required this.icon,
     this.iconSize = 32,
     this.textSize = 15,
+    this.textColor = kGreyColor,
   });
 
   final String title;
   final IconData icon;
   final double iconSize;
   final double textSize;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +89,10 @@ class TextIconButtonWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(fontSize: textSize, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: textSize,
+                fontWeight: FontWeight.bold,
+                color: textColor),
           ),
         ],
       ),
