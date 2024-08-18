@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({super.key, required this.child});
+  const AppBarWidget({
+    super.key,
+    required this.child,
+  });
 
   final Widget child;
 
