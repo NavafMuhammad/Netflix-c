@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/presentation/widgets/text_icon_button_widget.dart';
+import 'package:netflix/presentation/fast_laughs/widgets/fast_laugh_video_item_widget.dart';
 
 class ScreenFastLaugh extends StatelessWidget {
   const ScreenFastLaugh({super.key});
