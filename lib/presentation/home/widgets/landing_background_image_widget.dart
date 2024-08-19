@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
@@ -34,7 +33,11 @@ class LandingBackgroundImageWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const TextIconButtonWidget(title: 'Wishlist', icon: Icons.add),
+              const TextIconButtonWidget(
+                title: 'Wishlist',
+                icon: Icons.add,
+                textColor: kWhiteColor,
+              ),
               ElevatedButton.icon(
                 style: ButtonStyle(
                     shape: WidgetStatePropertyAll(RoundedRectangleBorder(
@@ -55,7 +58,10 @@ class LandingBackgroundImageWidget extends StatelessWidget {
                 ),
               ),
               const TextIconButtonWidget(
-                  title: 'info', icon: Icons.info_outline)
+                title: 'info',
+                icon: Icons.info_outline,
+                textColor: kWhiteColor,
+              )
             ],
           ),
         )
