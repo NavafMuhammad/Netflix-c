@@ -1,15 +1,13 @@
-
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix/domain/core/api_end_points.dart';
 import 'package:netflix/domain/core/main_failure/main_failure.dart';
-import 'package:netflix/domain/downloads/i_downloads_repo.dart';
+import 'package:netflix/domain/downloads/downloads_service.dart';
 import 'package:netflix/domain/downloads/models/downloads_model.dart';
 
-@LazySingleton(as: IDownloadsRepo)
-class DownloadsRepository implements IDownloadsRepo {
+@LazySingleton(as: DownloadsService)
+class DownloadsImpl implements DownloadsService {
   @override
   Future<Either<MainFailure, List<DownloadsModel>>> getDownloadsImages() async {
     try {

@@ -3,8 +3,6 @@ import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/widgets/main_card_widget.dart';
 import 'package:netflix/presentation/widgets/main_title_22.dart';
 
-
-
 class SearchActiveEidget extends StatelessWidget {
   const SearchActiveEidget({super.key});
 
@@ -29,5 +27,3 @@ class SearchActiveEidget extends StatelessWidget {
     );
   }
 }
-
-

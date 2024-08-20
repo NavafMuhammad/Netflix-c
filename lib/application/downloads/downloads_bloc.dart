@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix/domain/core/main_failure/main_failure.dart';
-import 'package:netflix/domain/downloads/i_downloads_repo.dart';
+import 'package:netflix/domain/downloads/downloads_service.dart';
 import 'package:netflix/domain/downloads/models/downloads_model.dart';
 
 part 'downloads_event.dart';
@@ -14,7 +12,7 @@ part 'downloads_bloc.freezed.dart';
 
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
-  final IDownloadsRepo downloadsRepo;
+  final DownloadsService downloadsRepo;
   DownloadsBloc(this.downloadsRepo) : super(DownloadsState.initial()) {
     on<_GetDownloadsImages>((event, emit) async {
       emit(state.copyWith(
@@ -25,12 +23,14 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
           await downloadsRepo.getDownloadsImages();
 
       emit(downloadsOption.fold(
-        (f) => state.copyWith(
-            isLoading: false, downloadsFailureorSuccessOption: Some(Left(f))),
-        (s) => state.copyWith(
+        (MainFailure f) => DownloadsState(
+            downloads: [],
+            isLoading: false,
+            downloadsFailureorSuccessOption: Some(Left(f))),
+        (List<DownloadsModel> list) => DownloadsState(
           isLoading: false,
-          downloads: s,
-          downloadsFailureorSuccessOption: Some(Right(s)),
+          downloads: list,
+          downloadsFailureorSuccessOption: Some(Right(list)),
         ),
       ));
     });

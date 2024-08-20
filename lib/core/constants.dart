@@ -16,4 +16,5 @@ const kMarginHorizontal5 = EdgeInsets.symmetric(horizontal: 5);
 const kCardRadius6 = BorderRadius.all(Radius.circular(6));
 
 //imageUrl
-const kHomeBackgroundImage = 'https://image.tmdb.org/t/p/original/53P8oHo9cfOsgb1cLxBi4pFY0ja.jpg';
+const kHomeBackgroundImage =
+    'https://image.tmdb.org/t/p/original/53P8oHo9cfOsgb1cLxBi4pFY0ja.jpg';
