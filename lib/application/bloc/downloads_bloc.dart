@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:netflix/domain/core/main_failure.dart';
+import 'package:injectable/injectable.dart';
+import 'package:netflix/domain/core/main_failure/main_failure.dart';
 import 'package:netflix/domain/downloads/i_downloads_repo.dart';
 import 'package:netflix/domain/downloads/models/downloads_model.dart';
 
@@ -9,6 +12,7 @@ part 'downloads_event.dart';
 part 'downloads_state.dart';
 part 'downloads_bloc.freezed.dart';
 
+@injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
   final IDownloadsRepo downloadsRepo;
   DownloadsBloc(this.downloadsRepo) : super(DownloadsState.initial()) {
@@ -22,9 +26,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
 
       emit(downloadsOption.fold(
         (f) => state.copyWith(
-          isLoading: false,
-          downloadsFailureorSuccessOption: Some(Left(f))
-        ),
+            isLoading: false, downloadsFailureorSuccessOption: Some(Left(f))),
         (s) => state.copyWith(
           isLoading: false,
           downloads: s,
