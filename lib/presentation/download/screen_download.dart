@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflix/application/bloc/downloads_bloc.dart';
+import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/core/strings.dart';
@@ -122,7 +122,7 @@ class SectionTwo extends StatelessWidget {
                             left: size.width * 0.08,
                             child: DownloadsImageWidget(
                               image:
-                                  '$kImageAppendUrl${state.downloads[7].posterPath}',
+                                  '$kImageAppendUrl${state.downloads[0].posterPath}',
                               angle: -0.24,
                               width: 0.37,
                               height: 0.51,
@@ -133,7 +133,7 @@ class SectionTwo extends StatelessWidget {
                             right: size.width * 0.08,
                             child: DownloadsImageWidget(
                               image:
-                                  '$kImageAppendUrl${state.downloads[9].posterPath}',
+                                  '$kImageAppendUrl${state.downloads[1].posterPath}',
                               angle: 0.24,
                               width: 0.37,
                               height: 0.51,
@@ -144,7 +144,7 @@ class SectionTwo extends StatelessWidget {
                             top: size.width * 0.205,
                             child: DownloadsImageWidget(
                               image:
-                                  '$kImageAppendUrl${state.downloads[8].posterPath}',
+                                  '$kImageAppendUrl${state.downloads[2].posterPath}',
                               width: 0.38,
                               height: 0.56,
                             ),

@@ -43,7 +43,6 @@ class _SearchWidgetState extends State<SearchWidget> {
           alignment: Alignment.center,
           children: [
             CupertinoSearchTextField(
-             
               controller: _textEditingController,
               focusNode: _focusNode,
               prefixInsets: EdgeInsets.only(left: _isFocused ? 22 : 0),
@@ -59,7 +58,6 @@ class _SearchWidgetState extends State<SearchWidget> {
               onChanged: (value) {
                 setState(() {
                   _isFocused = value.isNotEmpty || _focusNode.hasFocus;
-                  
                 });
               },
               onSubmitted: (value) {
@@ -79,9 +77,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                     size: 24,
                   ),
                   kWidth10,
-                  Text(_textEditingController.text.isEmpty ? 'Search' : ''
-                    
-                    ,
+                  Text(_textEditingController.text.isEmpty ? 'Search' : '',
                       style: const TextStyle(color: kGreyColor, fontSize: 17)),
                 ],
               ),

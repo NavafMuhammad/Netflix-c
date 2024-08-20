@@ -22,6 +22,10 @@ DownloadsModel _$DownloadsModelFromJson(Map<String, dynamic> json) {
 mixin _$DownloadsModel {
   @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: "title")
+  String? get title => throw _privateConstructorUsedError;
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath => throw _privateConstructorUsedError;
 
   /// Serializes this DownloadsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +43,10 @@ abstract class $DownloadsModelCopyWith<$Res> {
           DownloadsModel value, $Res Function(DownloadsModel) then) =
       _$DownloadsModelCopyWithImpl<$Res, DownloadsModel>;
   @useResult
-  $Res call({@JsonKey(name: "poster_path") String? posterPath});
+  $Res call(
+      {@JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "title") String? title,
+      @JsonKey(name: "backdrop_path") String? backdropPath});
 }
 
 /// @nodoc
@@ -58,11 +65,21 @@ class _$DownloadsModelCopyWithImpl<$Res, $Val extends DownloadsModel>
   @override
   $Res call({
     Object? posterPath = freezed,
+    Object? title = freezed,
+    Object? backdropPath = freezed,
   }) {
     return _then(_value.copyWith(
       posterPath: freezed == posterPath
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -76,7 +93,10 @@ abstract class _$$DownloadsModelImplCopyWith<$Res>
       __$$DownloadsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "poster_path") String? posterPath});
+  $Res call(
+      {@JsonKey(name: "poster_path") String? posterPath,
+      @JsonKey(name: "title") String? title,
+      @JsonKey(name: "backdrop_path") String? backdropPath});
 }
 
 /// @nodoc
@@ -93,11 +113,21 @@ class __$$DownloadsModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? posterPath = freezed,
+    Object? title = freezed,
+    Object? backdropPath = freezed,
   }) {
     return _then(_$DownloadsModelImpl(
       posterPath: freezed == posterPath
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backdropPath: freezed == backdropPath
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -107,7 +137,9 @@ class __$$DownloadsModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DownloadsModelImpl implements _DownloadsModel {
   const _$DownloadsModelImpl(
-      {@JsonKey(name: "poster_path") required this.posterPath});
+      {@JsonKey(name: "poster_path") required this.posterPath,
+      @JsonKey(name: "title") required this.title,
+      @JsonKey(name: "backdrop_path") required this.backdropPath});
 
   factory _$DownloadsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DownloadsModelImplFromJson(json);
@@ -115,10 +147,16 @@ class _$DownloadsModelImpl implements _DownloadsModel {
   @override
   @JsonKey(name: "poster_path")
   final String? posterPath;
+  @override
+  @JsonKey(name: "title")
+  final String? title;
+  @override
+  @JsonKey(name: "backdrop_path")
+  final String? backdropPath;
 
   @override
   String toString() {
-    return 'DownloadsModel(posterPath: $posterPath)';
+    return 'DownloadsModel(posterPath: $posterPath, title: $title, backdropPath: $backdropPath)';
   }
 
   @override
@@ -127,12 +165,15 @@ class _$DownloadsModelImpl implements _DownloadsModel {
         (other.runtimeType == runtimeType &&
             other is _$DownloadsModelImpl &&
             (identical(other.posterPath, posterPath) ||
-                other.posterPath == posterPath));
+                other.posterPath == posterPath) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.backdropPath, backdropPath) ||
+                other.backdropPath == backdropPath));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, posterPath);
+  int get hashCode => Object.hash(runtimeType, posterPath, title, backdropPath);
 
   /// Create a copy of DownloadsModel
   /// with the given fields replaced by the non-null parameter values.
@@ -153,8 +194,10 @@ class _$DownloadsModelImpl implements _DownloadsModel {
 
 abstract class _DownloadsModel implements DownloadsModel {
   const factory _DownloadsModel(
-          {@JsonKey(name: "poster_path") required final String? posterPath}) =
-      _$DownloadsModelImpl;
+      {@JsonKey(name: "poster_path") required final String? posterPath,
+      @JsonKey(name: "title") required final String? title,
+      @JsonKey(name: "backdrop_path")
+      required final String? backdropPath}) = _$DownloadsModelImpl;
 
   factory _DownloadsModel.fromJson(Map<String, dynamic> json) =
       _$DownloadsModelImpl.fromJson;
@@ -162,6 +205,12 @@ abstract class _DownloadsModel implements DownloadsModel {
   @override
   @JsonKey(name: "poster_path")
   String? get posterPath;
+  @override
+  @JsonKey(name: "title")
+  String? get title;
+  @override
+  @JsonKey(name: "backdrop_path")
+  String? get backdropPath;
 
   /// Create a copy of DownloadsModel
   /// with the given fields replaced by the non-null parameter values.
