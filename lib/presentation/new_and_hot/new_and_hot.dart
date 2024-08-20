@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/download/screen_download.dart';
-import 'package:netflix/presentation/new_and_hot/widgets/new_and_hot_image_widget.dart';
 import 'package:netflix/presentation/widgets/appbar_widget.dart';
-import 'package:netflix/presentation/widgets/main_title_22.dart';
-import 'package:netflix/presentation/widgets/text_icon_button_row.dart';
-import 'package:netflix/presentation/widgets/text_icon_button_widget.dart';
 
 import 'widgets/coming_soon_main_widget.dart';
 import 'widgets/everyones_watching_main_widget.dart';
@@ -79,5 +74,3 @@ class ScreenNewAndHot extends StatelessWidget {
         itemCount: 5);
   }
 }
-
-
