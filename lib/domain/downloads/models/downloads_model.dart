@@ -9,6 +9,9 @@ class DownloadsModel with _$DownloadsModel {
 
     @JsonKey(name: "title")
     required String? title,
+
+    @JsonKey(name: "backdrop_path")
+    required String? backdropPath,
   }) = _DownloadsModel;
 
   factory DownloadsModel.fromJson(Map<String, dynamic> json) =>

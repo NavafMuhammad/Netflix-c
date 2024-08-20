@@ -25,7 +25,7 @@ class SearchIdleWidget extends StatelessWidget {
               } else if (state.isError) {
                 return const Center(child: Text('Error Found'));
               } else if (state.searchIdleList.isEmpty) {
-                return const Center(child: Text('List is Empty'));
+                return const Center(child: Text(''));
               }
               return ListView.separated(
                   shrinkWrap: true,
@@ -33,7 +33,7 @@ class SearchIdleWidget extends StatelessWidget {
                         title: state.searchIdleList[index].title ??
                             'Title Not Provided',
                         image:
-                            '$kImageAppendUrl${state.searchIdleList[index].posterPath ?? ""}',
+                            '$kImageAppendUrl${state.searchIdleList[index].backdropPath ?? ""}',
                       ),
                   separatorBuilder: (ctx, index) => kHeight15,
                   itemCount: state.searchIdleList.length);

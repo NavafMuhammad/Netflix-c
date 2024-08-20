@@ -20,11 +20,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       : super(SearchState.initial()) {
     //searchIdle
     on<Initialize>((event, emit) async {
-      emit(const SearchState(
-          isLoading: true,
+      if (state.searchIdleList.isNotEmpty) {
+        emit(SearchState(
+          isLoading: false,
           isError: false,
           searchResultList: [],
-          searchIdleList: []));
+          searchIdleList: state.searchIdleList,
+        ));
+        return;
+      }
+
       //get trending movies
       final downloadslist = await downloadsService.getDownloadsImages();
 
