@@ -52,10 +52,36 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
 
     //search
-    on<SearchMovies>((event, emit) {
+    on<SearchMovies>((event, emit) async {
       //get movies according to search
-      searchService.searchMovies(moviesQuery: event.movieQuery);
+
+      emit(
+        const SearchState(
+          isLoading: true,
+          isError: false,
+          searchResultList: [],
+          searchIdleList: [],
+        ),
+      );
+
+      final searchList =
+          await searchService.searchMovies(moviesQuery: event.movieQuery);
+
+      final _state = searchList.fold(
+        (MainFailure f) => const SearchState(
+            isLoading: false,
+            isError: true,
+            searchResultList: [],
+            searchIdleList: []),
+        (SearchModel s) => SearchState(
+          isLoading: false,
+          isError: false,
+          searchResultList: s.results,
+          searchIdleList: [],
+        ),
+      );
       //display to ui
+      emit(_state);
     });
   }
 }

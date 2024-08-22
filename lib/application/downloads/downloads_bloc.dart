@@ -21,12 +21,13 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
           downloads: state.downloads,
           downloadsFailureorSuccessOption: none(),
         ));
+        return;
       }
 
       final Either<MainFailure, List<DownloadsModel>> downloadsOption =
           await downloadsRepo.getDownloadsImages();
 
-      emit(downloadsOption.fold(
+      final _state = downloadsOption.fold(
         (MainFailure f) => DownloadsState(
             downloads: [],
             isLoading: false,
@@ -36,7 +37,8 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
           downloads: list,
           downloadsFailureorSuccessOption: Some(Right(list)),
         ),
-      ));
+      );
+      emit(_state);
     });
   }
 }

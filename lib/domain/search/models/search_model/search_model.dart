@@ -18,16 +18,18 @@ class SearchModel {
 
 @JsonSerializable()
 class SearchResultData {
-  @JsonKey(name: 'id')
-  int? id;
+  
 
   @JsonKey(name: 'backdrop_path')
   String? backdropPath;
 
+  @JsonKey(name: "poster_path")
+  String? posterPath;
+
   @JsonKey(name: 'title')
   String? title;
 
-  SearchResultData({this.id, this.backdropPath, this.title});
+  SearchResultData({this.backdropPath, this.title});
 
   factory SearchResultData.fromJson(Map<String, dynamic> json) {
     return _$SearchResultDataFromJson(json);

@@ -26,6 +26,7 @@ class SearchImpl implements SearchService {
         log(searchList.toString());
         return Right(searchList);
       } else {
+        
         return const Left(MainFailure.serverFailure());
       }
     } catch (_) {

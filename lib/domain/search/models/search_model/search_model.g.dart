@@ -20,14 +20,13 @@ Map<String, dynamic> _$SearchModelToJson(SearchModel instance) =>
 
 SearchResultData _$SearchResultDataFromJson(Map<String, dynamic> json) =>
     SearchResultData(
-      id: (json['id'] as num?)?.toInt(),
       backdropPath: json['backdrop_path'] as String?,
       title: json['title'] as String?,
-    );
+    )..posterPath = json['poster_path'] as String?;
 
 Map<String, dynamic> _$SearchResultDataToJson(SearchResultData instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'backdrop_path': instance.backdropPath,
+      'poster_path': instance.posterPath,
       'title': instance.title,
     };
