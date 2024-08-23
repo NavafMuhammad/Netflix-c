@@ -28,30 +28,31 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: null
   bordered_text: ^2.0.0
+  chewie: 
   cupertino_icons: ^1.0.6
+  dartz: null
+  dio: null
   flutter:
     sdk: flutter
+  flutter_bloc: null
+  freezed: null
+  freezed_annotation: null
+  get_it: null
   google_fonts: null
+  injectable: null
+  json_annotation: null
   video_player: null
-  flutter_bloc:
-  bloc:
-  json_annotation:
-  freezed:
-  freezed_annotation:
-  get_it:
-  dio:
-  injectable:
-  dartz:
 
 dev_dependencies:
-  build_runner:
-  json_serializable:
-  flutter_launcher_icons:
+  build_runner: null
+  flutter_launcher_icons: null
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
-  injectable_generator:
+  injectable_generator: null
+  json_serializable: null
 
 flutter_icons:
   android: true

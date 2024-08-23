@@ -12,6 +12,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../../../application/downloads/downloads_bloc.dart' as _i747;
+import '../../../application/fastLaugh/fast_laugh_bloc.dart' as _i539;
 import '../../../application/search/search_bloc.dart' as _i823;
 import '../../../infrastructure/downloads/downloads_impl.dart' as _i122;
 import '../../../infrastructure/search/search_impl.dart' as _i948;
@@ -33,6 +34,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i891.DownloadsService>(() => _i122.DownloadsImpl());
     gh.factory<_i747.DownloadsBloc>(
         () => _i747.DownloadsBloc(gh<_i891.DownloadsService>()));
+    gh.factory<_i539.FastLaughBloc>(
+        () => _i539.FastLaughBloc(gh<_i891.DownloadsService>()));
     gh.factory<_i823.SearchBloc>(() => _i823.SearchBloc(
           gh<_i891.DownloadsService>(),
           gh<_i393.SearchService>(),

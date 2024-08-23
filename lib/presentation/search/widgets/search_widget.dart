@@ -4,7 +4,6 @@ import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/domain/core/debounce/debounce.dart';
-import 'package:netflix/presentation/widgets/main_title_22.dart';
 
 class SearchWidget extends StatelessWidget {
   SearchWidget({super.key});

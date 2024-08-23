@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/presentation/fast_laughs/widgets/fast_laugh_video_item_widget.dart';
+import 'package:netflix/presentation/widgets/mute_button.dart';
 
 class NewandHotImageWidget extends StatelessWidget {
   const NewandHotImageWidget({
