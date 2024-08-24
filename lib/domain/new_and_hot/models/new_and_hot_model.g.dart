@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'new_and_hot.dart';
+part of 'new_and_hot_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -27,7 +27,7 @@ NewAndHotMovieData _$NewAndHotMovieDataFromJson(Map<String, dynamic> json) =>
       backdropPath: json['backdrop_path'] as String?,
       id: (json['id'] as num?)?.toInt(),
       originalLanguage: json['original_language'] as String?,
-      originalTitle: json['original_title'] as String?,
+      name: json['name'] as String?,
       overview: json['overview'] as String?,
       posterPath: json['poster_path'] as String?,
       releaseDate: json['release_date'] as String?,
@@ -39,7 +39,7 @@ Map<String, dynamic> _$NewAndHotMovieDataToJson(NewAndHotMovieData instance) =>
       'backdrop_path': instance.backdropPath,
       'id': instance.id,
       'original_language': instance.originalLanguage,
-      'original_title': instance.originalTitle,
+      'name': instance.name,
       'overview': instance.overview,
       'poster_path': instance.posterPath,
       'release_date': instance.releaseDate,

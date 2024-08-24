@@ -15,7 +15,7 @@ class SearchImpl implements SearchService {
       {required String moviesQuery}) async {
     try {
       final Response response = await Dio(BaseOptions()).get(
-        ApiEndPoints.searchUrl,
+        ApiEndPoints.searchMovieUrl,
         queryParameters: {
           'query': moviesQuery,
         },

@@ -26,7 +26,7 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
           const FastLaughState(isLoading: true, isError: false, movieList: []));
 
       //get trending movie data
-      final moviedata = await _downloads.getDownloadsImages();
+      final moviedata = await _downloads.getTrendingMovieData();
       final _state = moviedata.fold(
           (f) => const FastLaughState(
               isLoading: false, isError: true, movieList: []),

@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'new_and_hot.g.dart';
+part 'new_and_hot_model.g.dart';
 
 @JsonSerializable()
 class NewAndHotModel {
@@ -30,8 +30,8 @@ class NewAndHotMovieData {
   @JsonKey(name: 'original_language')
   String? originalLanguage;
 
-  @JsonKey(name: 'original_title')
-  String? originalTitle;
+  @JsonKey(name: 'name')
+  String? name;
 
   @JsonKey(name: "overview")
   String? overview;
@@ -49,7 +49,7 @@ class NewAndHotMovieData {
     this.backdropPath,
     this.id,
     this.originalLanguage,
-    this.originalTitle,
+    this.name,
     this.overview,
     this.posterPath,
     this.releaseDate,

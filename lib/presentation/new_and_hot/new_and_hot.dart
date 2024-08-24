@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:netflix/application/new_and_hot/new_and_hot_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
@@ -7,8 +8,8 @@ import 'package:netflix/core/strings.dart';
 import 'package:netflix/presentation/download/screen_download.dart';
 import 'package:netflix/presentation/widgets/appbar_widget.dart';
 
-import 'widgets/coming_soon_main_widget.dart';
-import 'widgets/everyones_watching_main_widget.dart';
+import 'widgets/coming_soon_main_item_widget.dart';
+import 'widgets/everyones_watching_main_item_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -18,6 +19,8 @@ class ScreenNewAndHot extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<NewAndHotBloc>(context)
           .add(NewAndHotEvent.getNewAndHotMovieData());
+      BlocProvider.of<NewAndHotBloc>(context)
+          .add(NewAndHotEvent.getNewAndHotTvData());
     });
     return DefaultTabController(
       length: 2,
@@ -54,31 +57,18 @@ class ScreenNewAndHot extends StatelessWidget {
               ],
             ),
             kHeight10,
-            Expanded(
-              child: TabBarView(children: [
-                const ComingSoonWidget(),
-                _buildEveryonesWatching(),
-              ]),
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  ComingSoonWidget(),
+                  EveryOnesWatchingWidget(),
+                ],
+              ),
             )
           ],
         ),
       ),
     );
-  }
-
-  // _buildComingSoon() {
-  //   return ListView.separated(
-  //     itemBuilder: (ctx, index) => const ComingSoonMainWidget(),
-  //     separatorBuilder: (ctx, index) => kHeight20,
-  //     itemCount: 5,
-  //   );
-  // }
-
-  _buildEveryonesWatching() {
-    return ListView.separated(
-        itemBuilder: (ctx, index) => const EveryonesWatchingMainWidget(),
-        separatorBuilder: (ctx, index) => kHeight15,
-        itemCount: 5);
   }
 }
 
@@ -102,20 +92,50 @@ class ComingSoonWidget extends StatelessWidget {
               if (movie.id == null) {
                 return const SizedBox();
               }
+              String releaseDate = movie.releaseDate!;
+              DateTime date = DateTime.parse(releaseDate);
+              String month = DateFormat('MMM').format(date).toUpperCase();
+              String day = DateFormat('dd').format(date);
+
               return ComingSoonMainItemInheritedWidget(
                   widget: ComingSoonMainItemWidget(
                       id: movie.id.toString(),
                       movieName: movie.title ?? '',
                       posterPath: "$kImageAppendUrl${movie.backdropPath}",
                       description: movie.overview ?? "",
-                      month: 'MAR',
-                      day: '11'),
+                      month: month,
+                      day: day),
                   newAndHotModel: state.movieList[index]);
             },
             separatorBuilder: (ctx, index) => kHeight20,
             itemCount: state.movieList.length,
           );
         }
+      },
+    );
+  }
+}
+
+class EveryOnesWatchingWidget extends StatelessWidget {
+  const EveryOnesWatchingWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<NewAndHotBloc, NewAndHotState>(
+      builder: (context, state) {
+        return ListView.separated(
+            itemBuilder: (ctx, index) {
+              final tvList = state.tvList[index];
+              return EveryonesWatchingMainItemInheritedWidget(
+                newAndHotMovieData: state.tvList[index],
+                child: EveryonesWatchingMainItemWidget(
+                    backdropPath: "$kImageAppendUrl${tvList.backdropPath}",
+                    movieName: tvList.name ?? "",
+                    description: tvList.overview ?? ""),
+              );
+            },
+            separatorBuilder: (ctx, index) => kHeight15,
+            itemCount: state.tvList.length);
       },
     );
   }

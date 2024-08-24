@@ -29,9 +29,9 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: null
-  bordered_text: ^2.0.0
-  chewie: 
-  cupertino_icons: ^1.0.6
+  bordered_text:
+  chewie: null
+  cupertino_icons: 
   dartz: null
   dio: null
   flutter:
@@ -42,13 +42,14 @@ dependencies:
   get_it: null
   google_fonts: null
   injectable: null
+  intl: 
   json_annotation: null
   video_player: null
 
 dev_dependencies:
   build_runner: null
   flutter_launcher_icons: null
-  flutter_lints: ^3.0.0
+  flutter_lints: 
   flutter_test:
     sdk: flutter
   injectable_generator: null

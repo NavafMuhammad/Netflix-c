@@ -31,7 +31,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }
 
       //get trending movies
-      final downloadslist = await downloadsService.getDownloadsImages();
+      final downloadslist = await downloadsService.getTrendingMovieData();
 
       final _state = downloadslist.fold((MainFailure f) {
         return const SearchState(

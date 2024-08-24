@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
-import 'package:netflix/domain/new_and_hot/models/new_and_hot.dart';
+import 'package:netflix/domain/new_and_hot/models/new_and_hot_model.dart';
 import 'package:netflix/presentation/new_and_hot/widgets/new_and_hot_image_widget.dart';
 
 import '../../../core/colors.dart';
@@ -123,8 +123,6 @@ class ComingSoonMainItemWidget extends StatelessWidget {
                     ),
                     Text(
                       description,
-                      maxLines: 6,
-                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 13, color: kGreyColor),
                     ),
                   ],

@@ -18,33 +18,34 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DownloadsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getDownloadsImages,
+    required TResult Function() getDownloadsMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getDownloadsImages,
+    TResult? Function()? getDownloadsMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getDownloadsImages,
+    TResult Function()? getDownloadsMovieData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetDownloadsImages value) getDownloadsImages,
+    required TResult Function(GetDownloadsMovieData value)
+        getDownloadsMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult? Function(GetDownloadsMovieData value)? getDownloadsMovieData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult Function(GetDownloadsMovieData value)? getDownloadsMovieData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,18 +73,19 @@ class _$DownloadsEventCopyWithImpl<$Res, $Val extends DownloadsEvent>
 }
 
 /// @nodoc
-abstract class _$$GetDownloadsImagesImplCopyWith<$Res> {
-  factory _$$GetDownloadsImagesImplCopyWith(_$GetDownloadsImagesImpl value,
-          $Res Function(_$GetDownloadsImagesImpl) then) =
-      __$$GetDownloadsImagesImplCopyWithImpl<$Res>;
+abstract class _$$GetDownloadsMovieDataImplCopyWith<$Res> {
+  factory _$$GetDownloadsMovieDataImplCopyWith(
+          _$GetDownloadsMovieDataImpl value,
+          $Res Function(_$GetDownloadsMovieDataImpl) then) =
+      __$$GetDownloadsMovieDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetDownloadsImagesImplCopyWithImpl<$Res>
-    extends _$DownloadsEventCopyWithImpl<$Res, _$GetDownloadsImagesImpl>
-    implements _$$GetDownloadsImagesImplCopyWith<$Res> {
-  __$$GetDownloadsImagesImplCopyWithImpl(_$GetDownloadsImagesImpl _value,
-      $Res Function(_$GetDownloadsImagesImpl) _then)
+class __$$GetDownloadsMovieDataImplCopyWithImpl<$Res>
+    extends _$DownloadsEventCopyWithImpl<$Res, _$GetDownloadsMovieDataImpl>
+    implements _$$GetDownloadsMovieDataImplCopyWith<$Res> {
+  __$$GetDownloadsMovieDataImplCopyWithImpl(_$GetDownloadsMovieDataImpl _value,
+      $Res Function(_$GetDownloadsMovieDataImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of DownloadsEvent
@@ -92,18 +94,19 @@ class __$$GetDownloadsImagesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetDownloadsImagesImpl implements _GetDownloadsImages {
-  const _$GetDownloadsImagesImpl();
+class _$GetDownloadsMovieDataImpl implements GetDownloadsMovieData {
+  const _$GetDownloadsMovieDataImpl();
 
   @override
   String toString() {
-    return 'DownloadsEvent.getDownloadsImages()';
+    return 'DownloadsEvent.getDownloadsMovieData()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetDownloadsImagesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetDownloadsMovieDataImpl);
   }
 
   @override
@@ -112,27 +115,27 @@ class _$GetDownloadsImagesImpl implements _GetDownloadsImages {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getDownloadsImages,
+    required TResult Function() getDownloadsMovieData,
   }) {
-    return getDownloadsImages();
+    return getDownloadsMovieData();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getDownloadsImages,
+    TResult? Function()? getDownloadsMovieData,
   }) {
-    return getDownloadsImages?.call();
+    return getDownloadsMovieData?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getDownloadsImages,
+    TResult Function()? getDownloadsMovieData,
     required TResult orElse(),
   }) {
-    if (getDownloadsImages != null) {
-      return getDownloadsImages();
+    if (getDownloadsMovieData != null) {
+      return getDownloadsMovieData();
     }
     return orElse();
   }
@@ -140,34 +143,35 @@ class _$GetDownloadsImagesImpl implements _GetDownloadsImages {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetDownloadsImages value) getDownloadsImages,
+    required TResult Function(GetDownloadsMovieData value)
+        getDownloadsMovieData,
   }) {
-    return getDownloadsImages(this);
+    return getDownloadsMovieData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult? Function(GetDownloadsMovieData value)? getDownloadsMovieData,
   }) {
-    return getDownloadsImages?.call(this);
+    return getDownloadsMovieData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetDownloadsImages value)? getDownloadsImages,
+    TResult Function(GetDownloadsMovieData value)? getDownloadsMovieData,
     required TResult orElse(),
   }) {
-    if (getDownloadsImages != null) {
-      return getDownloadsImages(this);
+    if (getDownloadsMovieData != null) {
+      return getDownloadsMovieData(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetDownloadsImages implements DownloadsEvent {
-  const factory _GetDownloadsImages() = _$GetDownloadsImagesImpl;
+abstract class GetDownloadsMovieData implements DownloadsEvent {
+  const factory GetDownloadsMovieData() = _$GetDownloadsMovieDataImpl;
 }
 
 /// @nodoc
