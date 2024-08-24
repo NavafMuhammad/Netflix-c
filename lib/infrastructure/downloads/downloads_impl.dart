@@ -9,10 +9,10 @@ import 'package:netflix/domain/downloads/models/downloads_model.dart';
 @LazySingleton(as: DownloadsService)
 class DownloadsImpl implements DownloadsService {
   @override
-  Future<Either<MainFailure, List<DownloadsModel>>> getDownloadsImages() async {
+  Future<Either<MainFailure, List<DownloadsModel>>> getTrendingMovieData() async {
     try {
       final Response response =
-          await Dio(BaseOptions()).get(ApiEndPoints.downloadsUrl);
+          await Dio(BaseOptions()).get(ApiEndPoints.trendingMovieUrl);
       if (response.statusCode == 200 || response.statusCode == 201) {
         final downloadsList = (response.data['results'] as List)
             .map((e) => DownloadsModel.fromJson(e))

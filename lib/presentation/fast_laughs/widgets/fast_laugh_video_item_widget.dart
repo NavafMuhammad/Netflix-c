@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/application/fastLaugh/fast_laugh_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/core/strings.dart';
+import 'package:netflix/domain/downloads/models/downloads_model.dart';
+import 'package:netflix/presentation/fast_laughs/widgets/video_player_widget.dart';
+import 'package:netflix/presentation/widgets/mute_button.dart';
 import 'package:netflix/presentation/widgets/text_icon_button_widget.dart';
+
+class FastLaughVideoItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final DownloadsModel movieData;
+
+  const FastLaughVideoItemInheritedWidget({
+    super.key,
+    required this.widget,
+    required this.movieData,
+  }) : super(child: widget);
+
+  @override
+  bool updateShouldNotify(
+      covariant FastLaughVideoItemInheritedWidget oldWidget) {
+    return oldWidget.movieData != movieData;
+  }
+
+  static FastLaughVideoItemInheritedWidget? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<
+        FastLaughVideoItemInheritedWidget>();
+  }
+}
 
 class FastLaughVideoItemWidget extends StatelessWidget {
   const FastLaughVideoItemWidget({
@@ -12,12 +39,20 @@ class FastLaughVideoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final posterPath =
+        FastLaughVideoItemInheritedWidget.of(context)?.movieData.posterPath;
+    final videoUrl = dummyVideoUrls[index % dummyVideoUrls.length];
     return Stack(
       children: [
-        Container(
-          color: Colors.accents[index % Colors.accents.length],
+        SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: AspectRatio(
+              aspectRatio: MediaQuery.of(context).size.aspectRatio,
+              child: FastLaughVideoPlayer(
+                  videoUrl: videoUrl, onStateChanged: (val) {})),
         ),
-        const Align(
+        Align(
           alignment: Alignment.bottomLeft,
           child: Padding(
             padding: kPadding10,
@@ -25,32 +60,33 @@ class FastLaughVideoItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                MuteButton(),
+                const MuteButton(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     CircleAvatar(
                       radius: 33,
-                      backgroundImage: NetworkImage(
-                          'https://image.tmdb.org/t/p/original/bi4tb3GMYFVNUom65SJm7A66rgM.jpg'),
+                      backgroundImage: posterPath == null
+                          ? null
+                          : NetworkImage(kImageAppendUrl + posterPath),
                     ),
                     kHeight10,
-                    TextIconButtonWidget(
+                    const TextIconButtonWidget(
                       title: 'LOL',
                       icon: Icons.emoji_emotions_outlined,
                       textColor: kWhiteColor,
                     ),
-                    TextIconButtonWidget(
+                    const TextIconButtonWidget(
                       title: 'My List',
                       icon: Icons.add,
                       textColor: kWhiteColor,
                     ),
-                    TextIconButtonWidget(
+                    const TextIconButtonWidget(
                       title: 'Share',
                       icon: Icons.send_rounded,
                       textColor: kWhiteColor,
                     ),
-                    TextIconButtonWidget(
+                    const TextIconButtonWidget(
                       title: 'Play',
                       icon: Icons.play_arrow_rounded,
                       textColor: kWhiteColor,
@@ -62,31 +98,6 @@ class FastLaughVideoItemWidget extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
-}
-
-class MuteButton extends StatelessWidget {
-  const MuteButton({
-    this.radius = 30,
-    this.iconSize = 30,
-    super.key,
-  });
-
-  final double radius;
-  final double iconSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: kBlackColor.withOpacity(0.7),
-      radius: radius,
-      child: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.volume_off_rounded,
-            size: iconSize,
-          )),
     );
   }
 }

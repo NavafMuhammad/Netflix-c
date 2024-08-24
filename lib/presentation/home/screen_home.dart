@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/home/home_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/home/widgets/landing_background_image_widget.dart';
@@ -14,6 +16,12 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<HomeBloc>(context)
+          .add(const HomeEvent.getTrendingMovie());
+      BlocProvider.of<HomeBloc>(context)
+          .add(const HomeEvent.getDiscoverMovie());
+    });
     return ValueListenableBuilder(
       valueListenable: scrollNotifier,
       builder: (BuildContext context, index, _) {
@@ -32,13 +40,27 @@ class ScreenHome extends StatelessWidget {
           child: Stack(
             children: [
               ListView(
-                children: const [
+                children: [
                   LandingBackgroundImageWidget(),
-                  MainTitleCard(title: 'Released in the past years'),
-                  MainTitleCard(title: 'Trending Now'),
+                  // MainTitleCard(title: 'Released in the past years'),
+                  BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      return MainTitleCard(
+                        title: "Trending Now",
+                        list: state.getTrendingMovies,
+                      );
+                    },
+                  ),
                   Top10TitleCard(title: 'Top 10 TV Shows in India Today'),
-                  MainTitleCard(title: 'South Indian Cinema'),
-                  MainTitleCard(title: 'Tense Dramas'),
+                  BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      return MainTitleCard(
+                        title: 'South Indian Cinema',
+                        list: state.getDiscoverMovies,
+                      );
+                    },
+                  ),
+                  // MainTitleCard(title: 'Tense Dramas'),
                 ],
               ),
               scrollNotifier.value == true

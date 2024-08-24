@@ -19,6 +19,7 @@ class ScreenRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       bottomNavigationBar: const BottomNavBar(),
       body: SafeArea(

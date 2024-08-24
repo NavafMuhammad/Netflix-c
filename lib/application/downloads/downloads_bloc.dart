@@ -12,9 +12,9 @@ part 'downloads_bloc.freezed.dart';
 
 @injectable
 class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
-  final DownloadsService downloadsRepo;
-  DownloadsBloc(this.downloadsRepo) : super(DownloadsState.initial()) {
-    on<_GetDownloadsImages>((event, emit) async {
+  final DownloadsService downloadsService;
+  DownloadsBloc(this.downloadsService) : super(DownloadsState.initial()) {
+    on<GetDownloadsMovieData>((event, emit) async {
       if (state.downloads.isNotEmpty) {
         emit(state.copyWith(
           isLoading: false,
@@ -25,7 +25,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       }
 
       final Either<MainFailure, List<DownloadsModel>> downloadsOption =
-          await downloadsRepo.getDownloadsImages();
+          await downloadsService.getTrendingMovieData();
 
       final _state = downloadsOption.fold(
         (MainFailure f) => DownloadsState(
