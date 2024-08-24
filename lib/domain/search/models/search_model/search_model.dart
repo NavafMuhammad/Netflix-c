@@ -18,8 +18,6 @@ class SearchModel {
 
 @JsonSerializable()
 class SearchResultData {
-  
-
   @JsonKey(name: 'backdrop_path')
   String? backdropPath;
 

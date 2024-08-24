@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/new_and_hot/new_and_hot_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/core/strings.dart';
 import 'package:netflix/presentation/download/screen_download.dart';
 import 'package:netflix/presentation/widgets/appbar_widget.dart';
 
@@ -12,6 +15,10 @@ class ScreenNewAndHot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<NewAndHotBloc>(context)
+          .add(NewAndHotEvent.getNewAndHotMovieData());
+    });
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -49,7 +56,7 @@ class ScreenNewAndHot extends StatelessWidget {
             kHeight10,
             Expanded(
               child: TabBarView(children: [
-                _buildComingSoon(),
+                const ComingSoonWidget(),
                 _buildEveryonesWatching(),
               ]),
             )
@@ -59,18 +66,57 @@ class ScreenNewAndHot extends StatelessWidget {
     );
   }
 
-  _buildComingSoon() {
-    return ListView.separated(
-      itemBuilder: (ctx, index) => const ComingSoonMainWidget(),
-      separatorBuilder: (ctx, index) => kHeight20,
-      itemCount: 5,
-    );
-  }
+  // _buildComingSoon() {
+  //   return ListView.separated(
+  //     itemBuilder: (ctx, index) => const ComingSoonMainWidget(),
+  //     separatorBuilder: (ctx, index) => kHeight20,
+  //     itemCount: 5,
+  //   );
+  // }
 
   _buildEveryonesWatching() {
     return ListView.separated(
         itemBuilder: (ctx, index) => const EveryonesWatchingMainWidget(),
         separatorBuilder: (ctx, index) => kHeight15,
         itemCount: 5);
+  }
+}
+
+class ComingSoonWidget extends StatelessWidget {
+  const ComingSoonWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<NewAndHotBloc, NewAndHotState>(
+      builder: (context, state) {
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state.isError) {
+          return const Center(child: Text('Error while fetching data'));
+        } else if (state.movieList.isEmpty) {
+          return const Center(child: Text('List is Empty'));
+        } else {
+          return ListView.separated(
+            itemBuilder: (ctx, index) {
+              final movie = state.movieList[index];
+              if (movie.id == null) {
+                return const SizedBox();
+              }
+              return ComingSoonMainItemInheritedWidget(
+                  widget: ComingSoonMainItemWidget(
+                      id: movie.id.toString(),
+                      movieName: movie.title ?? '',
+                      posterPath: "$kImageAppendUrl${movie.backdropPath}",
+                      description: movie.overview ?? "",
+                      month: 'MAR',
+                      day: '11'),
+                  newAndHotModel: state.movieList[index]);
+            },
+            separatorBuilder: (ctx, index) => kHeight20,
+            itemCount: state.movieList.length,
+          );
+        }
+      },
+    );
   }
 }

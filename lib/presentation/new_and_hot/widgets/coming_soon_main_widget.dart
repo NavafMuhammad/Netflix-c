@@ -1,16 +1,49 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
+import 'package:netflix/domain/new_and_hot/models/new_and_hot.dart';
 import 'package:netflix/presentation/new_and_hot/widgets/new_and_hot_image_widget.dart';
 
 import '../../../core/colors.dart';
-import '../../widgets/main_title_22.dart';
 import '../../widgets/text_icon_button_row.dart';
 import '../../widgets/text_icon_button_widget.dart';
 
-class ComingSoonMainWidget extends StatelessWidget {
-  const ComingSoonMainWidget({
+class ComingSoonMainItemInheritedWidget extends InheritedWidget {
+  final Widget widget;
+  final NewAndHotMovieData newAndHotModel;
+
+  const ComingSoonMainItemInheritedWidget(
+      {super.key, required this.widget, required this.newAndHotModel})
+      : super(child: widget);
+
+  @override
+  bool updateShouldNotify(
+      covariant ComingSoonMainItemInheritedWidget oldWidget) {
+    return oldWidget.newAndHotModel != newAndHotModel;
+  }
+
+  static ComingSoonMainItemInheritedWidget? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<
+        ComingSoonMainItemInheritedWidget>();
+  }
+}
+
+class ComingSoonMainItemWidget extends StatelessWidget {
+  final String id;
+  final String movieName;
+  final String posterPath;
+  final String description;
+  final String month;
+  final String day;
+
+  const ComingSoonMainItemWidget({
     super.key,
+    required this.id,
+    required this.movieName,
+    required this.posterPath,
+    required this.description,
+    required this.month,
+    required this.day,
   });
 
   @override
@@ -20,17 +53,18 @@ class ComingSoonMainWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
+        SizedBox(
           width: 55,
           child: Column(
             children: [
               Text(
-                'FEB',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                month,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
-                '11',
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                     fontSize: 35,
                     letterSpacing: 4,
                     fontWeight: FontWeight.bold),
@@ -40,9 +74,11 @@ class ComingSoonMainWidget extends StatelessWidget {
         ),
         SizedBox(
           width: size.width - 55,
-          child: const Column(
+          child: Column(
             children: [
-              NewandHotImageWidget(),
+              NewandHotImageWidget(
+                imageUrl: posterPath,
+              ),
               Padding(
                 padding: kPadding10,
                 child: Column(
@@ -51,12 +87,16 @@ class ComingSoonMainWidget extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'NARUTO',
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Text(
+                            movieName,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold),
+                          ),
                         ),
-                        TextIconButtonRow(
+                        const TextIconButtonRow(
                           list: [
                             TextIconButtonWidget(
                               title: 'Remind Me',
@@ -74,10 +114,18 @@ class ComingSoonMainWidget extends StatelessWidget {
                         )
                       ],
                     ),
-                    MainTitle22(title: 'Naruto'),
                     Text(
-                      '''In the Village Hidden in the Leaves, there are few things Naruto and Choji love more than a steaming bowl of Ichiraku ramen, and when the daughter of the owner is kidnapped, they're on the case. Then, missions for the Leaf ninja lead them to the Land of Bears after a fallen meteorite and the Land of Greens to protect a princess. When an evil ninja who's after the princess gets in their way, it's Naruto's life on the line!,''',
-                      style: TextStyle(fontSize: 13, color: kGreyColor),
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      description,
+                      maxLines: 6,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 13, color: kGreyColor),
                     ),
                   ],
                 ),

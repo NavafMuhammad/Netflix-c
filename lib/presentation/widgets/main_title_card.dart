@@ -25,7 +25,11 @@ class MainTitleCard extends StatelessWidget {
             maxHeight: size.width * 0.5,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: List.generate(10, (index) => const MainCard(imageUrl: '',)),
+              children: List.generate(
+                  10,
+                  (index) => const MainCard(
+                        imageUrl: "https://image.tmdb.org/t/p/original/aIUZiciO0nMh8MrhmsTaMWZvEWK.jpg",
+                      )),
             ),
           ),
           kHeight15

@@ -48,8 +48,9 @@ class FastLaughVideoItemWidget extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           child: AspectRatio(
-            aspectRatio: MediaQuery.of(context).size.aspectRatio,
-            child: FastLaughVideoPlayer(videoUrl: videoUrl, onStateChanged: (val) {})),
+              aspectRatio: MediaQuery.of(context).size.aspectRatio,
+              child: FastLaughVideoPlayer(
+                  videoUrl: videoUrl, onStateChanged: (val) {})),
         ),
         Align(
           alignment: Alignment.bottomLeft,

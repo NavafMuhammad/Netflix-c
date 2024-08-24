@@ -17,7 +17,7 @@ class EveryonesWatchingMainWidget extends StatelessWidget {
     return const SizedBox(
       child: Column(
         children: [
-          NewandHotImageWidget(),
+          NewandHotImageWidget(imageUrl: "",),
           Padding(
             padding: kPadding10,
             child: Column(
