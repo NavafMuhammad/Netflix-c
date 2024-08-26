@@ -27,14 +27,14 @@ class FastLaughBloc extends Bloc<FastLaughEvent, FastLaughState> {
 
       //get trending movie data
       final moviedata = await _downloads.getTrendingMovieData();
-      final _state = moviedata.fold(
+      final state = moviedata.fold(
           (f) => const FastLaughState(
               isLoading: false, isError: true, movieList: []),
           (s) =>
               FastLaughState(isLoading: false, isError: false, movieList: s));
 
       //send to ui
-      emit(_state);
+      emit(state);
     });
   }
 }

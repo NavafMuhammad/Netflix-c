@@ -4,10 +4,7 @@ import 'package:netflix/presentation/home/widgets/top_10_card_widget.dart';
 import 'package:netflix/presentation/widgets/main_title_22.dart';
 
 class Top10TitleCard extends StatelessWidget {
-  const Top10TitleCard({
-    required this.title,
-    super.key,
-  });
+  const Top10TitleCard({required this.title, super.key});
 
   final String title;
 
@@ -25,8 +22,12 @@ class Top10TitleCard extends StatelessWidget {
             maxHeight: size.width * 0.5,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children:
-                  List.generate(10, (index) => Top10CardWidget(index: index)),
+              children: List.generate(
+                  10,
+                  (index) => Top10CardWidget(
+                        index: index,
+                        image: kHomeBackgroundImage,
+                      )),
             ),
           ),
           kHeight15

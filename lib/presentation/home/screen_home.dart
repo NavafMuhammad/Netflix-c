@@ -5,9 +5,7 @@ import 'package:netflix/application/home/home_bloc.dart';
 import 'package:netflix/core/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/presentation/home/widgets/landing_background_image_widget.dart';
-import 'package:netflix/presentation/home/widgets/top_10_title_card.dart';
 import 'package:netflix/presentation/widgets/appbar_widget.dart';
-import 'package:netflix/presentation/widgets/main_title_card.dart';
 
 ValueNotifier scrollNotifier = ValueNotifier(true);
 
@@ -20,8 +18,13 @@ class ScreenHome extends StatelessWidget {
       BlocProvider.of<HomeBloc>(context)
           .add(const HomeEvent.getTrendingMovie());
       BlocProvider.of<HomeBloc>(context)
+          .add(const HomeEvent.getUpComingMovie());
+      BlocProvider.of<HomeBloc>(context).add(const HomeEvent.getPopularMovie());
+      BlocProvider.of<HomeBloc>(context)
           .add(const HomeEvent.getDiscoverMovie());
+      BlocProvider.of<HomeBloc>(context).add(const HomeEvent.getDiscoverTv());
     });
+    BlocProvider.of<HomeBloc>(context).add(const HomeEvent.getTrendingMovie());
     return ValueListenableBuilder(
       valueListenable: scrollNotifier,
       builder: (BuildContext context, index, _) {
@@ -39,29 +42,38 @@ class ScreenHome extends StatelessWidget {
           },
           child: Stack(
             children: [
-              ListView(
-                children: [
-                  LandingBackgroundImageWidget(),
-                  // MainTitleCard(title: 'Released in the past years'),
-                  BlocBuilder<HomeBloc, HomeState>(
-                    builder: (context, state) {
-                      return MainTitleCard(
-                        title: "Trending Now",
-                        list: state.getTrendingMovies,
-                      );
-                    },
-                  ),
-                  Top10TitleCard(title: 'Top 10 TV Shows in India Today'),
-                  BlocBuilder<HomeBloc, HomeState>(
-                    builder: (context, state) {
-                      return MainTitleCard(
-                        title: 'South Indian Cinema',
-                        list: state.getDiscoverMovies,
-                      );
-                    },
-                  ),
-                  // MainTitleCard(title: 'Tense Dramas'),
-                ],
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  if (state.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state.isError) {
+                    return const Center(
+                        child: Text("Error while fetching data"));
+                  } else if (state.getTrendingMovies.isEmpty) {
+                    return const Center(child: Text("List is Empty"));
+                  } else {
+                    return ListView(
+                      children: [
+                        LandingBackgroundImageWidget(
+                          state: state,
+                        ),
+                        // MainTitleCard(
+                        //   title: 'Released in the past years',
+                        // ),
+                        // MainTitleCard(
+                        //   title: "Trending Now",
+                        // ),
+                        // Top10TitleCard(title: 'Top 10 TV Shows in India Today'),
+                        // MainTitleCard(
+                        //   title: 'Tense Dramas',
+                        // ),
+                        // MainTitleCard(
+                        //   title: 'South Indian Cinema',
+                        // ),
+                      ],
+                    );
+                  }
+                },
               ),
               scrollNotifier.value == true
                   ? AnimatedContainer(

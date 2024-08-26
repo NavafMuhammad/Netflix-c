@@ -27,7 +27,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
       final Either<MainFailure, List<DownloadsModel>> downloadsOption =
           await downloadsService.getTrendingMovieData();
 
-      final _state = downloadsOption.fold(
+      final updatedState = downloadsOption.fold(
         (MainFailure f) => DownloadsState(
             downloads: [],
             isLoading: false,
@@ -38,7 +38,7 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
           downloadsFailureorSuccessOption: Some(Right(list)),
         ),
       );
-      emit(_state);
+      emit(updatedState);
     });
   }
 }

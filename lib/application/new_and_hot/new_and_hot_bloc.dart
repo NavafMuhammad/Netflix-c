@@ -19,7 +19,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
 
       //get movie data
       final movieList = await newAndHotService.getUpComingMovieData();
-      final _state = movieList.fold(
+      final updatedState = movieList.fold(
           (f) => NewAndHotState(
               isLoading: false, isError: true, movieList: [], tvList: []),
           (s) => NewAndHotState(
@@ -29,7 +29,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
               tvList: state.tvList));
 
       //send to ui
-      emit(_state);
+      emit(updatedState);
     });
     on<GetNewAndHotTvData>((event, emit) async {
       //set initial state
@@ -38,7 +38,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
 
       //get movie data
       final tvList = await newAndHotService.getDiscoverTvData();
-      final _state = tvList.fold(
+      final updatedState = tvList.fold(
           (f) => NewAndHotState(
               isLoading: false, isError: true, movieList: [], tvList: []),
           (s) => NewAndHotState(
@@ -48,7 +48,7 @@ class NewAndHotBloc extends Bloc<NewAndHotEvent, NewAndHotState> {
               tvList: s.results));
 
       //send to ui
-      emit(_state);
+      emit(updatedState);
     });
   }
 }

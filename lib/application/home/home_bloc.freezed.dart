@@ -713,15 +713,15 @@ abstract class GetDiscoverTv implements HomeEvent {
 mixin _$HomeState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
-  List<DownloadsModel> get getTrendingMovies =>
+  List<HomeResultData> get getTrendingMovies =>
       throw _privateConstructorUsedError;
-  List<DownloadsModel> get getUpComingMovies =>
+  List<HomeResultData> get getUpComingMovies =>
       throw _privateConstructorUsedError;
-  List<DownloadsModel> get getPopularMovies =>
+  List<HomeResultData> get getPopularMovies =>
       throw _privateConstructorUsedError;
-  List<DownloadsModel> get getDiscoverMovies =>
+  List<HomeResultData> get getDiscoverMovies =>
       throw _privateConstructorUsedError;
-  List<DownloadsModel> get getDiscoverTv => throw _privateConstructorUsedError;
+  List<HomeResultData> get getDiscoverTv => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -738,11 +738,11 @@ abstract class $HomeStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isError,
-      List<DownloadsModel> getTrendingMovies,
-      List<DownloadsModel> getUpComingMovies,
-      List<DownloadsModel> getPopularMovies,
-      List<DownloadsModel> getDiscoverMovies,
-      List<DownloadsModel> getDiscoverTv});
+      List<HomeResultData> getTrendingMovies,
+      List<HomeResultData> getUpComingMovies,
+      List<HomeResultData> getPopularMovies,
+      List<HomeResultData> getDiscoverMovies,
+      List<HomeResultData> getDiscoverTv});
 }
 
 /// @nodoc
@@ -780,23 +780,23 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       getTrendingMovies: null == getTrendingMovies
           ? _value.getTrendingMovies
           : getTrendingMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getUpComingMovies: null == getUpComingMovies
           ? _value.getUpComingMovies
           : getUpComingMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getPopularMovies: null == getPopularMovies
           ? _value.getPopularMovies
           : getPopularMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getDiscoverMovies: null == getDiscoverMovies
           ? _value.getDiscoverMovies
           : getDiscoverMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getDiscoverTv: null == getDiscoverTv
           ? _value.getDiscoverTv
           : getDiscoverTv // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
     ) as $Val);
   }
 }
@@ -812,11 +812,11 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isError,
-      List<DownloadsModel> getTrendingMovies,
-      List<DownloadsModel> getUpComingMovies,
-      List<DownloadsModel> getPopularMovies,
-      List<DownloadsModel> getDiscoverMovies,
-      List<DownloadsModel> getDiscoverTv});
+      List<HomeResultData> getTrendingMovies,
+      List<HomeResultData> getUpComingMovies,
+      List<HomeResultData> getPopularMovies,
+      List<HomeResultData> getDiscoverMovies,
+      List<HomeResultData> getDiscoverTv});
 }
 
 /// @nodoc
@@ -852,23 +852,23 @@ class __$$HomeStateImplCopyWithImpl<$Res>
       getTrendingMovies: null == getTrendingMovies
           ? _value._getTrendingMovies
           : getTrendingMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getUpComingMovies: null == getUpComingMovies
           ? _value._getUpComingMovies
           : getUpComingMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getPopularMovies: null == getPopularMovies
           ? _value._getPopularMovies
           : getPopularMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getDiscoverMovies: null == getDiscoverMovies
           ? _value._getDiscoverMovies
           : getDiscoverMovies // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
       getDiscoverTv: null == getDiscoverTv
           ? _value._getDiscoverTv
           : getDiscoverTv // ignore: cast_nullable_to_non_nullable
-              as List<DownloadsModel>,
+              as List<HomeResultData>,
     ));
   }
 }
@@ -879,11 +879,11 @@ class _$HomeStateImpl implements _HomeState {
   _$HomeStateImpl(
       {required this.isLoading,
       required this.isError,
-      required final List<DownloadsModel> getTrendingMovies,
-      required final List<DownloadsModel> getUpComingMovies,
-      required final List<DownloadsModel> getPopularMovies,
-      required final List<DownloadsModel> getDiscoverMovies,
-      required final List<DownloadsModel> getDiscoverTv})
+      required final List<HomeResultData> getTrendingMovies,
+      required final List<HomeResultData> getUpComingMovies,
+      required final List<HomeResultData> getPopularMovies,
+      required final List<HomeResultData> getDiscoverMovies,
+      required final List<HomeResultData> getDiscoverTv})
       : _getTrendingMovies = getTrendingMovies,
         _getUpComingMovies = getUpComingMovies,
         _getPopularMovies = getPopularMovies,
@@ -894,45 +894,45 @@ class _$HomeStateImpl implements _HomeState {
   final bool isLoading;
   @override
   final bool isError;
-  final List<DownloadsModel> _getTrendingMovies;
+  final List<HomeResultData> _getTrendingMovies;
   @override
-  List<DownloadsModel> get getTrendingMovies {
+  List<HomeResultData> get getTrendingMovies {
     if (_getTrendingMovies is EqualUnmodifiableListView)
       return _getTrendingMovies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_getTrendingMovies);
   }
 
-  final List<DownloadsModel> _getUpComingMovies;
+  final List<HomeResultData> _getUpComingMovies;
   @override
-  List<DownloadsModel> get getUpComingMovies {
+  List<HomeResultData> get getUpComingMovies {
     if (_getUpComingMovies is EqualUnmodifiableListView)
       return _getUpComingMovies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_getUpComingMovies);
   }
 
-  final List<DownloadsModel> _getPopularMovies;
+  final List<HomeResultData> _getPopularMovies;
   @override
-  List<DownloadsModel> get getPopularMovies {
+  List<HomeResultData> get getPopularMovies {
     if (_getPopularMovies is EqualUnmodifiableListView)
       return _getPopularMovies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_getPopularMovies);
   }
 
-  final List<DownloadsModel> _getDiscoverMovies;
+  final List<HomeResultData> _getDiscoverMovies;
   @override
-  List<DownloadsModel> get getDiscoverMovies {
+  List<HomeResultData> get getDiscoverMovies {
     if (_getDiscoverMovies is EqualUnmodifiableListView)
       return _getDiscoverMovies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_getDiscoverMovies);
   }
 
-  final List<DownloadsModel> _getDiscoverTv;
+  final List<HomeResultData> _getDiscoverTv;
   @override
-  List<DownloadsModel> get getDiscoverTv {
+  List<HomeResultData> get getDiscoverTv {
     if (_getDiscoverTv is EqualUnmodifiableListView) return _getDiscoverTv;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_getDiscoverTv);
@@ -987,26 +987,26 @@ abstract class _HomeState implements HomeState {
   factory _HomeState(
       {required final bool isLoading,
       required final bool isError,
-      required final List<DownloadsModel> getTrendingMovies,
-      required final List<DownloadsModel> getUpComingMovies,
-      required final List<DownloadsModel> getPopularMovies,
-      required final List<DownloadsModel> getDiscoverMovies,
-      required final List<DownloadsModel> getDiscoverTv}) = _$HomeStateImpl;
+      required final List<HomeResultData> getTrendingMovies,
+      required final List<HomeResultData> getUpComingMovies,
+      required final List<HomeResultData> getPopularMovies,
+      required final List<HomeResultData> getDiscoverMovies,
+      required final List<HomeResultData> getDiscoverTv}) = _$HomeStateImpl;
 
   @override
   bool get isLoading;
   @override
   bool get isError;
   @override
-  List<DownloadsModel> get getTrendingMovies;
+  List<HomeResultData> get getTrendingMovies;
   @override
-  List<DownloadsModel> get getUpComingMovies;
+  List<HomeResultData> get getUpComingMovies;
   @override
-  List<DownloadsModel> get getPopularMovies;
+  List<HomeResultData> get getPopularMovies;
   @override
-  List<DownloadsModel> get getDiscoverMovies;
+  List<HomeResultData> get getDiscoverMovies;
   @override
-  List<DownloadsModel> get getDiscoverTv;
+  List<HomeResultData> get getDiscoverTv;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

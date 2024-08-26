@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/core/constants.dart';
-import 'package:netflix/core/strings.dart';
-import 'package:netflix/domain/downloads/models/downloads_model.dart';
 import 'package:netflix/presentation/widgets/main_card_widget.dart';
 import 'package:netflix/presentation/widgets/main_title_22.dart';
 
 class MainTitleCard extends StatelessWidget {
-  const MainTitleCard({
-    required this.title,
-    super.key, required this.list, 
+  const MainTitleCard({super.key, 
+    required this.title, 
+
   });
 
   final String title;
-  final List<DownloadsModel> list;
-
+  // final List<HomeResultData> list;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +27,10 @@ class MainTitleCard extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: List.generate(
-                  list.length,
-                  (index) =>  MainCard(
-                        imageUrl: "$kImageAppendUrl${list[index].posterPath}",
+                  10,
+                  (index) => const MainCard(
+                        imageUrl:
+                            kHomeBackgroundImage,
                       )),
             ),
           ),

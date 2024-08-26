@@ -7,9 +7,10 @@ const url =
     'https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg';
 
 class Top10CardWidget extends StatelessWidget {
-  const Top10CardWidget({super.key, required this.index});
+  const Top10CardWidget({super.key, required this.index, required this.image});
 
   final int index;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,8 @@ class Top10CardWidget extends StatelessWidget {
               width: size.width * 0.33,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  image: const DecorationImage(
-                      fit: BoxFit.cover, image: NetworkImage(url))),
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: NetworkImage(image))),
             ),
           ],
         ),

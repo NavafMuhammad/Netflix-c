@@ -48,13 +48,9 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i891.DownloadsService>(),
           gh<_i393.SearchService>(),
         ));
+    gh.factory<_i485.HomeBloc>(() => _i485.HomeBloc(gh<_i545.HomeService>()));
     gh.factory<_i747.DownloadsBloc>(
         () => _i747.DownloadsBloc(gh<_i891.DownloadsService>()));
-    gh.factory<_i485.HomeBloc>(() => _i485.HomeBloc(
-          gh<_i891.DownloadsService>(),
-          gh<_i655.NewAndHotService>(),
-          gh<_i545.HomeService>(),
-        ));
     return this;
   }
 }
